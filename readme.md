@@ -38,9 +38,11 @@ Este proyecto está construido exclusivamente con las siguientes tecnologías fr
 ### En Línea (Recomendado)
 
 Puedes ver una demostración en vivo del proyecto aquí:
-**[ENLACE AQUÍ]** ### Ejecución Local
+[**DEMO EN VIVO**](https://ayfos.github.io/biblioteca-app/)
 
-1.  Clona el repositorio: `git clone [AÑADE LA URL DEL REPOSITORIO AQUÍ]`
+### Ejecución Local
+
+1.  Clona el repositorio: `git clone https://github.com/Ayfos/biblioteca-app`
 2.  Navega a la carpeta del proyecto.
 3.  Abre el archivo `index.html` con la extensión **Live Server** de Visual Studio Code.
 
