@@ -1,0 +1,266 @@
+/* VARIABLES GLOBALES */
+:root {
+    --primary-color: #007bff;
+    /* Azul vibrante */
+    --secondary-color: #6c757d;
+    /* Gris para texto secundario */
+    --background-light: #e9eef2;
+    /* Fondo sutilmente gris para contraste */
+    --header-bg: #343a40;
+    /* Fondo oscuro para el encabezado */
+    --card-bg: white;
+    --read-color: #28a745;
+    /* Verde para "Leído" */
+    --unread-color: #ffc107;
+    /* Amarillo para "No leído" */
+    --delete-color: #dc3545;
+    /* Rojo para botón Eliminar */
+}
+
+/* 1. ESTILOS GLOBALES Y ENCABEZADO */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-light);
+    color: #343a40;
+    margin: 0;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.5);
+
+    /* Centrado perfecto con Flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    /* Estilo para el título centrado con línea azul */
+    margin: 0 0 20px;
+    font-size: 2.5em;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 5px;
+    max-width: fit-content;
+    text-align: center;
+}
+
+/* Botón principal de Añadir Libro */
+#add-book-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid white;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-book-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+/* 2. DISEÑO DE LA CUADRÍCULA Y TARJETAS */
+#book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* TARJETA INDIVIDUAL */
+.book-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    /* Sombra para elevación visual */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.book-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.book-card h3 {
+    font-size: 1.6em;
+    color: var(--primary-color);
+    margin: 0 0 10px;
+    line-height: 1.2;
+}
+
+.book-card p {
+    margin: 6px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* 3. ESTILOS DE ESTADO Y BOTONES */
+
+/* Contenedor de botones (flex para el gap) */
+.book-card .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.book-card button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Estado de Lectura */
+.book-card p:nth-child(4) {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    color: var(--primary-color);
+}
+
+/* Botón de Eliminar */
+.delete-btn {
+    background-color: var(--delete-color);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Botón de Cambiar Estado */
+.toggle-read-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.toggle-read-btn:hover {
+    background-color: #5a6268;
+}
+
+/* 4. ESTILOS DEL MODAL Y FORMULARIO */
+#book-form-modal {
+    border: none;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+#book-form-modal h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+#new-book-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Estilo de los campos de entrada de texto/número */
+#new-book-form input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s;
+}
+
+#new-book-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* Grupo de checkbox para centrar */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.checkbox-group label {
+    margin: 0 10px 0 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: inline;
+}
+
+#new-book-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Botón de envío en el formulario */
+#new-book-form button[type="submit"] {
+    background-color: var(--read-color);
+    color: white;
+    padding: 12px;
+    margin-top: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+#new-book-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Botón para cerrar el modal: Discreto, circular y fijo en tamaño */
+#close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    /* Fijamos el tamaño */
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+
+    background: none;
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+
+    font-size: 0.9em;
+    font-weight: bold;
+
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: all 0.2s;
+}
+
+#close-modal-btn:hover {
+    background-color: var(--delete-color);
+    color: white;
+    border-color: var(--delete-color);
+}
